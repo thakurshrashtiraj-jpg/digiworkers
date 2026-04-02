@@ -1068,31 +1068,31 @@ def place_order():
     if wid:
         conn.execute("UPDATE workers SET status='busy' WHERE id=?", (wid,))
     conn.commit(); conn.close()
-  import smtplib
-  from email.mime.text import MIMEText
-
-  def send_order_email(order_num, client_name, service_name, amount, phone):
-      try:
-          msg = MIMEText(f"""
-  🆕 NAYA ORDER AAYA!
-
-  Order Number: {order_num}
-  Client: {client_name}
-  Phone: {phone}
-  Service: {service_name}
-  Amount: ₹{amount}
+    import smtplib
+    from email.mime.text import MIMEText
   
-  Dashboard: https://digiworkers.onrender.com
-          """)
-          msg['Subject'] = f'🔔 New Order {order_num} — DigiWorkers'
-          msg['From'] = 'aapki@gmail.com'
-          msg['To'] = 'aapki@gmail.com'
+    def send_order_email(order_num, client_name, service_name, amount, phone):
+        try:
+            msg = MIMEText(f"""
+    🆕 NAYA ORDER AAYA!
 
-          with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    Order Number: {order_num}
+    Client: {client_name}
+    Phone: {phone}
+    Service: {service_name}
+    Amount: ₹{amount}
+    
+    Dashboard: https://digiworkers.onrender.com
+            """)
+            msg['Subject'] = f'🔔 New Order {order_num} — DigiWorkers'
+            msg['From'] = 'aapki@gmail.com'
+            msg['To'] = 'aapki@gmail.com'
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                smtp.login('aapki@gmail.com', 'app_password_yahan')
                smtp.send_message(msg)
-      except:
-          pass
+        except:
+            pass
     return jsonify({"message":"Order placed!","order_number":num,"amount":final,
                     "worker_assigned":worker["name"] if worker else "Assigning soon"}), 201
 
