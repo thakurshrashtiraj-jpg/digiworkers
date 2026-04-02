@@ -13,7 +13,7 @@ SETUP:
 from flask import Flask, request, jsonify, render_template_string
 from flask_cors import CORS
 import sqlite3, json, datetime, os, secrets, requests
-
+import os
 app = Flask(__name__)
 CORS(app)
 app.secret_key = secrets.token_hex(32)
@@ -21,8 +21,8 @@ app.secret_key = secrets.token_hex(32)
 DB_PATH = "digiworkers.db"
 
 # ── Razorpay Keys (apni keys yahan daalein) ──────────────
-RAZORPAY_KEY_ID     = "rzp_test_SYLhlPVtfChwHG"
-RAZORPAY_KEY_SECRET = "6r2RO7jfcW3AV0GcRiuuBL5w"
+RAZORPAY_KEY_ID     = os.environ.get("RAZORPAY_KEY_ID", "")
+RAZORPAY_KEY_SECRET = os.environ.get("RAZORPAY_KEY_SECRET", "")
 # ─────────────────────────────────────────────────────────
 
 HTML_PAGE = """<!DOCTYPE html>
