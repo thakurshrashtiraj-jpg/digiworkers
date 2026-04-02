@@ -21,8 +21,8 @@ app.secret_key = secrets.token_hex(32)
 DB_PATH = "digiworkers.db"
 
 # ── Razorpay Keys (apni keys yahan daalein) ──────────────
-RAZORPAY_KEY_ID     = "rzp_test_YourKeyHere"
-RAZORPAY_KEY_SECRET = "YourSecretHere"
+RAZORPAY_KEY_ID     = "rzp_test_SYLhlPVtfChwHG"
+RAZORPAY_KEY_SECRET = "6r2RO7jfcW3AV0GcRiuuBL5w"
 # ─────────────────────────────────────────────────────────
 
 HTML_PAGE = """<!DOCTYPE html>
